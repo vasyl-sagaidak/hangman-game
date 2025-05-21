@@ -2,12 +2,6 @@ package org.example;
 
 public class WordHandler {
 
-    public void print(String word, String resultingWord, int mistakes, String letters) {
-        System.out.println("Загаданное слово из " + word.length() + " букв: [" + resultingWord + "]");
-        System.out.println("Допущено ошибок: " + mistakes + " из " + Hangman.MAX_MISTAKES + " возможных.");
-        System.out.println("Использованные буквы: " + letters);
-    }
-
     public String encrypt(String word) {
         int len = word.length();
         StringBuilder sb = new StringBuilder();
@@ -15,5 +9,20 @@ public class WordHandler {
             sb.append("*");
         }
         return sb.toString();
+    }
+
+    public String showOpenedLetters(String word, String resultingWord, String userInput) {
+        char[] wordArray = word.toCharArray();
+        char[] resultingChar = resultingWord.toCharArray();
+        for (int i = 0; i < wordArray.length; i++) {
+            if (String.valueOf(wordArray[i]).equals(userInput)) {
+                resultingChar[i] = userInput.charAt(0);
+            }
+        }
+        String recoupled = "";
+        for (char c : resultingChar) {
+            recoupled += c;
+        }
+        return recoupled;
     }
 }
