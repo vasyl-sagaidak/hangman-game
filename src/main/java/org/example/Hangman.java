@@ -42,18 +42,19 @@ public class Hangman {
                             if (word.contains(userInput)) {
                                 ConsolePrinter.letterMatchMessage();
                                 resultingWord = wordHandler.showOpenedLetters(word, resultingWord,userInput);
-                                ConsolePrinter.currentScoreMessage(word, resultingWord, mistakes, usedLetters);
-                                gameVisualizer.visualize(mistakes);
                             } else {
-                                if (++mistakes == MAX_MISTAKES) {
+                                if (!resultingWord.contains(userInput)) {
+                                    mistakes++;
+                                }
+                                if (mistakes == MAX_MISTAKES) {
                                     gameVisualizer.visualize(mistakes);
                                     ConsolePrinter.gameOverMessage();
                                     break;
                                 }
                                 ConsolePrinter.letterMisMatchMessage();
-                                ConsolePrinter.currentScoreMessage(word, resultingWord, mistakes, usedLetters);
-                                gameVisualizer.visualize(mistakes);
                             }
+                            ConsolePrinter.currentScoreMessage(word, resultingWord, mistakes, usedLetters);
+                            gameVisualizer.visualize(mistakes);
                         }
                 }
             } else {

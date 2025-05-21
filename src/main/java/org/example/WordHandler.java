@@ -19,10 +19,10 @@ public class WordHandler {
                 resultingChar[i] = userInput.charAt(0);
             }
         }
-        String recoupled = "";
+        StringBuilder recoupled = new StringBuilder();
         for (char c : resultingChar) {
-            recoupled += c;
+            recoupled.append(c);
         }
-        return recoupled;
+        return recoupled.toString();
     }
 }
